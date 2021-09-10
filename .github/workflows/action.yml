@@ -14,7 +14,7 @@ jobs:
           remote: '~/'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
           host: ${{secrets.SSH_HOST}}                                         # Remote server port - REQUIRED false - DEFAULT 22
           user: root
-          key: ${{secrets.SSH_PRIVATE_KEY}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
           pre_upload: echo "This will be executed before the upload!"  # Command to run via ssh before scp upload - REQUIRED false
           post_upload: echo "This will be executed after the upload!"  # Command to run via ssh after scp upload - REQUIRED false
           ssh_options: -o StrictHostKeyChecking=no                     # A set of ssh_option separated by -o - REQUIRED false - DEFAULT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
