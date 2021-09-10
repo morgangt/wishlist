@@ -15,7 +15,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'something'
-      - uses: mdallasanta/ssh-scp-deploy@Latest
+      - uses: mdallasanta/ssh-scp-deploy@v1.0.5
         with:
           local: './'
           remote: '/opt/'
