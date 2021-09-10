@@ -1,7 +1,7 @@
 name: first-github-action
 on:
-  branches:
-    push: [ master ]
+  push:
+    branches§: [ master ]
 
 jobs:
   build:
