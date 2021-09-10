@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Start!'
-      - uses: mdallasanta/ssh-scp-deploy@{version}
+      - uses: mdallasanta/ssh-scp-deploy@v1.0.5
         with:
           local: './'                                                  # Local file path - REQUIRED false - DEFAULT ./
           remote: '~/'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
