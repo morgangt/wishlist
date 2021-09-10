@@ -17,5 +17,6 @@ jobs:
           known_hosts: 'something'
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - run: apt install -y rsync
       - name: Deploy with rsync
         run: rsync -r /home/runner/work/wishlist/ root@${{ secrets.SSH_HOST }}:/opt/
