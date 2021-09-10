@@ -15,15 +15,14 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'something'
-      - uses: mdallasanta/ssh-scp-deploy@v1.0.5
+      - name: Deploy to Docker swarm
+        uses: wshihadeh/docker-deployment-action@v1
         with:
-          local: './'
-          remote: '/opt/'
-          host: ${{secrets.SSH_HOST}}
-          user: root
-          key: ${{secrets.SSH_HOST}}
-          pre_upload: echo "This will be executed before the upload!"
-          post_upload: echo "This will be executed after the upload!"
-          ssh_options: -o StrictHostKeyChecking=no
-          scp_options: -v
-
+          remote_docker_host: root@${{secrets.SSH_HOST}}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          deployment_mode: docker-swarm
+          copy_stack_file: true
+          deploy_path: /root/my-deployment
+          stack_file_name: docker-compose.yaml
+          keep_files: 5
+          args: my_applicaion
