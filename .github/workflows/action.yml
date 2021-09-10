@@ -7,14 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'Hello world!'
-      - run: pwd
-      - run: ls
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: 'something'
+      - run: echo 'Start!'
       - name: Deploy to Docker swarm
         uses: wshihadeh/docker-deployment-action@v1
         with:
