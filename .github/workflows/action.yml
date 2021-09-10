@@ -1,0 +1,10 @@
+name: first-github-action
+on:
+  branches:
+    push: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Hello world!'
