@@ -15,7 +15,15 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'something'
-      - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      - name: Deploy with SCP
-        run: scp -r -C /home/runner/work/ root@${{ secrets.SSH_HOST }}:/opt/
+      - uses: mdallasanta/ssh-scp-deploy@{version}
+        with:
+          local: './'
+          remote: '/opt/'
+          host: ${{secrets.SSH_HOST}}
+          user: root
+          key: ${{secrets.SSH_HOST}}
+          pre_upload: echo "This will be executed before the upload!"
+          post_upload: echo "This will be executed after the upload!"
+          ssh_options: -o StrictHostKeyChecking=no
+          scp_options: -v
+
